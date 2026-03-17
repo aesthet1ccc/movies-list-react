@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+.header_container {
+  margin-top: 20px;
+  background-color: #ffffff;
+
+  h1 {
+    font: 20px/145% var(--sans);
+    letter-spacing: 0.18px;
+    color-scheme: light dark;
+    font-synthesis: none;
+
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .header_user_actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .user_actions_block {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      cursor: pointer;
+    }
+  }
+}
