@@ -1,0 +1,28 @@
+.main_container {
+  background-color: #f6f6f6;
+  padding: 50px;
+  color: #333333;
+
+  .content_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+  .sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+  }
+
+  .movies_block {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
+    align-items: center;
+    justify-items: center;
+    padding: auto;
+  }
+}
