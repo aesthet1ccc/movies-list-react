@@ -1,0 +1,16 @@
+.section_favorite {
+  background-color: #f6f6f6;
+  padding: 40px;
+  color: #333333;
+  .favorite_title {
+    margin: 15px 0 40px;
+    text-align: center;
+  }
+
+  .favorite_movies_block {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    row-gap: 40px;
+  }
+}

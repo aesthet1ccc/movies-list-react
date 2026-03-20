@@ -13,6 +13,14 @@
   .poster_wrapper {
     position: relative;
     width: 100%;
+
+    .favorite_icon {
+      top: 363px;
+      right: 10px;
+      z-index: 2;
+
+      position: absolute;
+    }
     .rating {
       z-index: 2;
       display: flex;
@@ -52,4 +60,56 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease;
   }
+}
+
+// MODAL CSS
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal_content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  color: #000;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+    }
+  }
+}
+
+.btn_confirm {
+  background: #28a745;
+  color: white;
+}
+.btn_cancel {
+  background: #dc3545;
+  color: white;
 }

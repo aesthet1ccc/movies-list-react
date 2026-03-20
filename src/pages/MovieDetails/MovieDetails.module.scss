@@ -1,0 +1,24 @@
+.poster {
+  transform: translateZ(50px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.movie_detail_block {
+  background-color: #f6f6f6;
+  color: #333333;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  padding: 50px 100px 50px;
+
+  .movie_info_block {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 5px;
+      padding: 0;
+    }
+  }
+}

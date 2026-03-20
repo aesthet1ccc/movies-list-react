@@ -6,7 +6,12 @@
   .content_wrapper {
     display: flex;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 70px;
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
   }
   .sidebar {
     width: 250px;
@@ -20,7 +25,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 25px;
+    column-gap: 60px;
+    row-gap: 30px;
     align-items: center;
     justify-items: center;
     padding: auto;

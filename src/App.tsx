@@ -12,8 +12,7 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<MoviesList />} />
-        <Route path="movies-details" element={<MoviesDetails />} /> //дать
-        ссылку на информацию о фильме
+        <Route path="/movies-details/:id" element={<MoviesDetails />} />
         <Route path="favorite-movies" element={<FavoriteMovies />} />
       </Routes>
     </BrowserRouter>

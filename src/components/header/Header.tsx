@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import favorites_icon from "../../assets/favourites-icon.svg";
@@ -27,7 +26,6 @@ const Header = () => {
             <h1>Избранное</h1>
           </div>
         </Link>
-        {/* <Link to="/movies-details" className={style.link}> */}
         <div className={style.user_actions_block}>
           <img
             src={comparison_icon}
@@ -37,7 +35,6 @@ const Header = () => {
           />
           <h1>Сравнение</h1>
         </div>
-        {/* </Link> */}
         <div />
       </div>
     </header>

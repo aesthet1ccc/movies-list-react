@@ -1,4 +1,4 @@
-import { Checkbox, FormItem, Group, Header } from "@vkontakte/vkui";
+import { Checkbox, Group, Header } from "@vkontakte/vkui";
 
 const genres = [
   "биография",
