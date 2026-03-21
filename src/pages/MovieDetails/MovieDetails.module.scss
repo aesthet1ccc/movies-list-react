@@ -5,8 +5,8 @@
 }
 
 .movie_detail_block {
-  background-color: #f6f6f6;
-  color: #333333;
+  background: linear-gradient(135deg, #303033 0%, #3c3c40 100%);
+  color: #ffff;
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -15,6 +15,10 @@
   .movie_info_block {
     display: flex;
     flex-direction: column;
+
+    h1 {
+      line-height: 1.2em;
+    }
 
     p {
       margin: 5px;

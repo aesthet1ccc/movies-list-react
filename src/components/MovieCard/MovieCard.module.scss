@@ -1,9 +1,17 @@
 .movie_card_block {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
   .movie_year {
     margin-top: 5px;
   }
   width: 200px;
-
+  padding: 10px;
   cursor: pointer;
 
   display: flex;
@@ -14,12 +22,29 @@
     position: relative;
     width: 100%;
 
-    .favorite_icon {
-      top: 363px;
-      right: 10px;
-      z-index: 2;
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
 
+      top: 355px;
+      right: 10px;
+      z-index: 3;
+
+      filter: brightness(0) invert(1);
       position: absolute;
+
+      .checkbox {
+        transform: scale(1.2);
+      }
+    }
+
+    .favorite_icon {
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
     }
     .rating {
       z-index: 2;
@@ -30,7 +55,6 @@
       top: 10px;
       left: 10px;
 
-      background-color: green;
       font-size: 16px;
       font-weight: 500;
       color: white;
@@ -61,8 +85,6 @@
     transition: transform 0.2s ease;
   }
 }
-
-// MODAL CSS
 
 .modal_overlay {
   position: fixed;

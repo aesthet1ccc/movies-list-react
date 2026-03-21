@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import blank_poster from "../../assets/blank-poster.svg";
 
+import blank_poster from "../../assets/blank-poster.svg";
 import style from "./MovieDetails.module.scss";
 
 interface MovieDetailFetch {
@@ -32,6 +32,8 @@ const MoviesDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
 
+  const apiToken = import.meta.env.VITE_API_TOKEN;
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       setIsLoading(true);
@@ -40,7 +42,7 @@ const MoviesDetails = () => {
           `https://api.poiskkino.dev/v1.4/movie/${id}`,
           {
             params: {
-              token: import.meta.env.VITE_API_TOKEN,
+              token: apiToken,
             },
           },
         );
@@ -60,9 +62,12 @@ const MoviesDetails = () => {
   if (!movieDetail) return <section>Фильм не найден</section>;
 
   const genres = movieDetail.genres.map((genre) => genre.name).join(", ");
-  const date = new Date(
-    movieDetail.premiere?.russia || movieDetail.premiere?.world || "",
-  ).toLocaleDateString("ru-RU");
+
+  const unreadyDate =
+    movieDetail.premiere?.russia || movieDetail.premiere?.world;
+  const date = unreadyDate
+    ? new Date(unreadyDate).toLocaleDateString("ru-RU")
+    : "неизвестна";
 
   return (
     <section className={style.movie_detail_block}>

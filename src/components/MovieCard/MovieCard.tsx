@@ -1,9 +1,12 @@
-import { useState, type FC, type MouseEvent } from "react";
+import { useState } from "react";
+import type { FC, MouseEvent } from "react";
+import { Checkbox } from "@vkontakte/vkui";
 
 import style from "./MovieCard.module.scss";
-import no_favorite_heart from "../../assets/heart-no-active.svg";
+import heart from "../../assets/favourites-icon.svg";
 import favorite_heart from "../../assets/active-heart.svg";
 import blank_poster from "./../../assets/blank-poster.svg";
+import { useComparison } from "../../Contexts/ComparisonContext/ComparisonContext";
 
 export interface MovieData {
   id: number;
@@ -20,6 +23,7 @@ export interface MovieData {
   genres: {
     name: string;
   }[];
+  movieLength: number;
 }
 
 interface MovieCardProps {
@@ -39,6 +43,11 @@ export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     checkIsFavoriteInLocalStorage(movie.id),
   );
 
+  const { movieComparisonList, handleAddToComparison } = useComparison();
+  const isInComparison = movieComparisonList.some(
+    (value) => value.id === movie.id,
+  );
+
   const handleClickFavorite = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -55,7 +64,6 @@ export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     const favorites: number[] = JSON.parse(localStorageData);
 
     let updateFavorites: number[];
-
     if (isFavorite) {
       updateFavorites = favorites.filter((id) => id !== movie.id);
     } else {
@@ -67,17 +75,14 @@ export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     localStorage.setItem("favorites", stringifyData);
     setIsFavorite(!isFavorite);
     setIsActiveModal(false);
-
-    console.log(updateFavorites);
-    console.log(localStorage.getItem("favorites"));
   };
 
   const getRatingColor = (rating: number) => {
-    if (rating >= 8) return "#FFD700";
+    if (rating >= 8) return "#35ff5a";
     if (rating > 7 && rating < 8) return "#28a745";
     if (rating > 4 && rating <= 7) return "#808080";
     if (rating <= 4 && rating > 0) return "#dc3545";
-    return "#ccc";
+    return "#808080";
   };
 
   return (
@@ -97,19 +102,28 @@ export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
           >
             {movie.rating.imdb || "—"}
           </span>
-          <img
-            className={style.favorite_icon}
-            src={isFavorite ? favorite_heart : no_favorite_heart}
-            alt="favorite icon"
-            width={30}
-            height={30}
-            onClick={handleClickFavorite}
-          />
+          <div className={style.icons}>
+            <div onClick={(event: MouseEvent) => event.stopPropagation()}>
+              <Checkbox
+                checked={isInComparison}
+                onChange={() => handleAddToComparison(movie)}
+                className={style.checkbox}
+              />
+            </div>
+            <img
+              className={style.favorite_icon}
+              src={isFavorite ? favorite_heart : heart}
+              alt="favorite icon"
+              width={26}
+              height={26}
+              onClick={handleClickFavorite}
+            />
+          </div>
         </div>
         <h2 className={style.movie_title}>
           {movie.name || movie.alternativeName}
         </h2>
-        <p className={style.movie_year}>Год выпуска: {movie.year || "—"}</p>
+        <p className={style.movie_year}>Год: {movie.year || "—"}</p>
       </article>
 
       {isActiveModal && (

@@ -5,16 +5,19 @@ import MoviesList from "./pages/MoviesList/MoviesList";
 import MoviesDetails from "./pages/MovieDetails/MoviesDetails";
 import FavoriteMovies from "./pages/FavoriteMovies/FavoriteMovies";
 import Header from "./components/header/Header";
+import { ComparisonProvider } from "../src/Contexts/ComparisonContext/ComparisonContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route index element={<MoviesList />} />
-        <Route path="/movies-details/:id" element={<MoviesDetails />} />
-        <Route path="favorite-movies" element={<FavoriteMovies />} />
-      </Routes>
+      <ComparisonProvider>
+        <Header />
+        <Routes>
+          <Route index element={<MoviesList />} />
+          <Route path="/movies-details/:id" element={<MoviesDetails />} />
+          <Route path="favorite-movies" element={<FavoriteMovies />} />
+        </Routes>
+      </ComparisonProvider>
     </BrowserRouter>
   );
 }

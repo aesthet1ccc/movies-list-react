@@ -3,10 +3,12 @@ body {
 }
 
 .header_container {
-  color: #333333;
+  color: #ffff;
+  background-color: #3a3a3c;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-  margin: 20px 0;
-  background-color: #ffffff;
+  padding: 20px 0 20px 50px;
 
   h1 {
     font: 20px/145% var(--sans);
@@ -35,6 +37,10 @@ body {
       gap: 5px;
 
       cursor: pointer;
+
+      .icon {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 }

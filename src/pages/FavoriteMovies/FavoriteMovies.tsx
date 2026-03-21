@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FC } from "react";
+
 import {
   MovieCard,
   type MovieData,
 } from "../../components/MovieCard/MovieCard";
-
 import style from "./FavoriteMovies.module.scss";
 
-const FavoriteMovies = () => {
+const FavoriteMovies: FC = () => {
   const [favoriteMovies, setFavoriteMovies] = useState<MovieData[]>([]);
 
   useEffect(() => {
@@ -20,6 +20,8 @@ const FavoriteMovies = () => {
         return [];
       }
 
+      const apiToken = import.meta.env.VITE_API_TOKEN;
+
       try {
         const queryParams = idInLocalStorage.map((id) => `id=${id}`).join("&");
         console.log(queryParams);
@@ -28,7 +30,7 @@ const FavoriteMovies = () => {
           `https://api.poiskkino.dev/v1/movie?${queryParams}`,
           {
             params: {
-              token: import.meta.env.VITE_API_TOKEN,
+              token: apiToken,
             },
           },
         );

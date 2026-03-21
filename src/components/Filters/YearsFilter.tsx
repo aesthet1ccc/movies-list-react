@@ -1,5 +1,5 @@
 import { Button, Group, Header, Input, FormItem } from "@vkontakte/vkui";
-import { useState, useEffect } from "react"; // Добавили useEffect
+import { useState, useEffect } from "react";
 
 interface YearsFilterProps {
   onApply: (from: string, to: string) => void;
